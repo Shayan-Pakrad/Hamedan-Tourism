@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import "example.com/go-htmx-tailwindcss/application"
 
 func main() {
-	fmt.Println("Hello world")
+	// TODO: Root = Root or CWD
+	// TODO: initialize echo with binder and validator
+
+	_ = application.New()
 }
