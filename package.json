@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "postcss index.css -o public/index.css"
+    "build": "postcss index.css -o public/index.css && go build main.go"
   },
   "keywords": [],
   "author": "",
