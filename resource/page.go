@@ -41,10 +41,11 @@ func (pr PageResource) home(w http.ResponseWriter, r *http.Request) error {
 
 func (pr PageResource) attractions(w http.ResponseWriter, r *http.Request) error {
 	attractions := []model.Attraction{}
-	if err := pr.DB.NewSelect().Model(&attractions).Column("id", "title", "brief").Scan(r.Context()); err != nil {
+	if err := pr.DB.NewSelect().Model(&attractions).Scan(r.Context()); err != nil {
 		return err
 	}
 
+	pr.Logger.Debug("attractions", "attractions", attractions)
 	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
 		Name: "attractions.html",
 		Data: attractions,
@@ -52,10 +53,11 @@ func (pr PageResource) attractions(w http.ResponseWriter, r *http.Request) error
 }
 
 type Attraction struct {
-	ID      int64         `bun:"id"`
-	Title   string        `bun:"title"`
-	Brief   string        `bun:"brief"`
-	Content template.HTML `bun:"content"`
+	ID       int64         `bun:"id"`
+	ImageURL string        `bun:"image_url"`
+	Title    string        `bun:"title"`
+	Brief    string        `bun:"brief"`
+	Content  template.HTML `bun:"content"`
 }
 
 func (pr PageResource) attraction(w http.ResponseWriter, r *http.Request) error {
