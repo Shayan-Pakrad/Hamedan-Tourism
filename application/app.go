@@ -1,6 +1,7 @@
 package application
 
 import (
+	"context"
 	"errors"
 	"html/template"
 	"log/slog"
@@ -8,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"example.com/hamedan-tourism/model"
 	"example.com/hamedan-tourism/resource"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/validator/v10"
@@ -45,13 +47,8 @@ func New() *App {
 }
 
 func (app *App) Setup() {
-	app.router.Mount("/", resource.PageResource{
-		Pages: app.pages,
-		EH:    app.eh,
-	}.Routes())
-
-	app.router.Handle("/static/*", http.StripPrefix("/static/",
-		http.FileServer(http.Dir(filepath.Join(app.root, "public")))))
+	app.registerRoutes()
+	app.createTables()
 }
 
 func (app *App) Start() {
@@ -65,4 +62,24 @@ func (app *App) Start() {
 		app.logger.Error("failed to start http server", "error", err)
 		os.Exit(1)
 	}
+}
+
+func (app *App) createTables() {
+	ctx := context.Background()
+
+	app.db.
+		NewCreateTable().
+		IfNotExists().
+		Model((*model.Attraction)(nil)).
+		Exec(ctx)
+}
+
+func (app *App) registerRoutes() {
+	app.router.Mount("/", resource.PageResource{
+		Pages: app.pages,
+		EH:    app.eh,
+	}.Routes())
+
+	app.router.Handle("/static/*", http.StripPrefix("/static/",
+		http.FileServer(http.Dir(filepath.Join(app.root, "public")))))
 }
