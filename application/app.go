@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"example.com/hamedan-tourism/resource"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/validator/v10"
 	"github.com/uptrace/bun"
@@ -48,15 +49,19 @@ func New() *App {
 }
 
 func (app *App) Setup() {
-	// TODO: routes here
+	app.router.Mount("/", resource.PageResource{
+		Pages: app.pages,
+		EH:    app.eh,
+	}.Routes())
 }
 
 func (app *App) Start() {
 	srv := &http.Server{
-		Addr: os.Getenv("ADDR"),
+		Addr:    os.Getenv("ADDR"),
 		Handler: app.router,
 	}
 
+	app.logger.Info("starting to listen and serve", "address", srv.Addr)
 	if err := srv.ListenAndServe(); !errors.Is(err, http.ErrServerClosed) {
 		app.logger.Error("failed to start http server", "error", err)
 		os.Exit(1)
@@ -97,7 +102,7 @@ func (app *App) initDB() {
 }
 
 func (app *App) initPages() {
-	pages := template.New("pages")
+	pages := template.New("layout.html")
 	pages.Funcs(template.FuncMap{
 		"partial": func(name string, data any) (template.HTML, error) {
 			buf := new(bytes.Buffer)
@@ -119,9 +124,7 @@ func (app *App) initPages() {
 }
 
 func (app *App) initComponents() {
-	components := template.New("components")
-
-	_, err := components.ParseGlob(filepath.Join(app.root, "components", "*.html"))
+	components, err := template.ParseGlob(filepath.Join(app.root, "components", "*.html"))
 	if err != nil {
 		app.logger.Error("failed to parse components template", "error", err)
 		os.Exit(1)

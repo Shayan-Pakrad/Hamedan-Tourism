@@ -1,6 +1,6 @@
 package main
 
-import "example.com/go-htmx-tailwindcss/application"
+import "example.com/hamedan-tourism/application"
 
 func main() {
 	app := application.New()
