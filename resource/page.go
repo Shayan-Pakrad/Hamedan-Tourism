@@ -79,7 +79,7 @@ func (pr PageResource) attraction(w http.ResponseWriter, r *http.Request) error 
 
 func (pr PageResource) blogs(w http.ResponseWriter, r *http.Request) error {
 	blogs := []model.Blog{}
-	if err := pr.DB.NewSelect().Model(&blogs).Column("id", "title", "brief", "views").Scan(r.Context()); err != nil {
+	if err := pr.DB.NewSelect().Model(&blogs).Scan(r.Context()); err != nil {
 		return err
 	}
 
