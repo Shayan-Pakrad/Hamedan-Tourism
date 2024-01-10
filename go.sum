@@ -5,6 +5,8 @@ github.com/dustin/go-humanize v1.0.1 h1:GzkhY7T5VNhEkwH0PVJgjz+fX1rhBrR7pRT3mDkp
 github.com/dustin/go-humanize v1.0.1/go.mod h1:Mu1zIs6XwVuF/gI1OepvI0qD18qycQx+mFykh5fBlto=
 github.com/gabriel-vasile/mimetype v1.4.2 h1:w5qFW6JKBz9Y393Y4q372O9A7cUSequkh1Q7OhCmWKU=
 github.com/gabriel-vasile/mimetype v1.4.2/go.mod h1:zApsH/mKG4w07erKIaJPFiX0Tsq9BFQgN3qGY5GnNgA=
+github.com/go-chi/chi/v5 v5.0.11 h1:BnpYbFZ3T3S1WMpD79r7R5ThWX40TaFB7L31Y8xqSwA=
+github.com/go-chi/chi/v5 v5.0.11/go.mod h1:DslCQbL2OYiznFReuXYUmQ2hGd1aDpCnlMNITLSKoi8=
 github.com/go-playground/assert/v2 v2.2.0 h1:JvknZsQTYeFEAhQwI4qEt9cyV5ONwRHC+lYKSsYSR8s=
 github.com/go-playground/assert/v2 v2.2.0/go.mod h1:VDjEfimB/XKnb+ZQfWdccd7VUvScMdVu0Titje2rxJ4=
 github.com/go-playground/locales v0.14.1 h1:EWaQ/wswjilfKLTECiXz7Rh+3BjFhfDFKv/oXslEjJA=
@@ -57,6 +59,8 @@ github.com/uptrace/bun/dialect/sqlitedialect v1.1.16 h1:gbc9BP/e4sNOB9VBj+Si46dp
 github.com/uptrace/bun/dialect/sqlitedialect v1.1.16/go.mod h1:YNezpK7fIn5Wa2WGmTCZ/nEyiswcXmuT4iNWADeL1x4=
 github.com/uptrace/bun/driver/sqliteshim v1.1.16 h1:dhXrdXQegGSM+Jk07s9p1Y575DMhCKl7wBkss8kgM+8=
 github.com/uptrace/bun/driver/sqliteshim v1.1.16/go.mod h1:7fJaPqaiSvnWytQcMwVv1ZcjUJh7tGDonO/zq3O6RRI=
+github.com/utilyre/xmate v1.2.5 h1:plT6knPBTb6Y0lVoQZ/8V9rkZftHz9QHYtb9Q0vb2KM=
+github.com/utilyre/xmate v1.2.5/go.mod h1:hEamayjdCWokbZBW1jSi2TRLD/1posRoonP9F9vIH38=
 github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=
 github.com/valyala/bytebufferpool v1.0.0/go.mod h1:6bBcMArwyJ5K/AmCkWv1jt77kVWyCJ6HpOuEn7z0Csc=
 github.com/valyala/fasttemplate v1.2.2 h1:lxLXG0uE3Qnshl9QyaK6XJxMXlQZELvChBOCmQD0Loo=

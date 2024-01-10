@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "postcss --watch index.css -o public/index.css & gow -s -e=go,mod,html run ."
+    "dev": "postcss --watch index.css -o public/index.css & ADDR=:3000 gow -s -e=go,mod,html run ."
   },
   "keywords": [],
   "author": "",
