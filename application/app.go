@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"example.com/hamedan-tourism/resource"
 	"github.com/go-chi/chi/v5"
@@ -48,6 +49,10 @@ func (app *App) Setup() {
 		Pages: app.pages,
 		EH:    app.eh,
 	}.Routes())
+
+	app.router.Get("/index.css", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, filepath.Join(app.root, "public/index.css"))
+	})
 }
 
 func (app *App) Start() {
@@ -62,4 +67,3 @@ func (app *App) Start() {
 		os.Exit(1)
 	}
 }
-
