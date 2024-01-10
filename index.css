@@ -17,3 +17,7 @@ body {
 .raw-html p {
   @apply py-2;
 }
+
+.raw-html ul {
+  @apply list-disc ps-4;
+}
