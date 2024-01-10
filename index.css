@@ -5,3 +5,15 @@
 body {
   font-family: "Vazirmatn", sans-serif;
 }
+
+.raw-html h2 {
+  @apply text-2xl;
+}
+
+.raw-html h3 {
+  @apply text-xl;
+}
+
+.raw-html p {
+  @apply py-2;
+}

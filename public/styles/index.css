@@ -520,6 +520,12 @@ video {
 .cursor-pointer {
   cursor: pointer;
 }
+.flex-col {
+  flex-direction: column;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
 .gap-4 {
   gap: 1rem;
 }
@@ -570,6 +576,21 @@ video {
 
 body {
   font-family: "Vazirmatn", sans-serif;
+}
+
+.raw-html h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.raw-html h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.raw-html p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .hover\:bg-gray-200:hover {
