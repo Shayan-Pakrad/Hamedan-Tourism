@@ -1,4 +1,4 @@
-module example.com/go-htmx-tailwindcss
+module example.com/hamedan-tourism
 
 go 1.21.5
 
