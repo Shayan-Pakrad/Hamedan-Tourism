@@ -45,7 +45,6 @@ func (pr PageResource) attractions(w http.ResponseWriter, r *http.Request) error
 		return err
 	}
 
-	pr.Logger.Debug("attractions", "attractions", attractions)
 	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
 		Name: "attractions.html",
 		Data: attractions,
