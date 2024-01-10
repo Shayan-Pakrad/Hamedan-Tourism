@@ -11,14 +11,16 @@
     <title>گردشگری همدان</title>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li>نماد</li>
-        <li>جاذبه ها</li>
-        <li>بلاگ ها</li>
-        <li>رویداد ها</li>
+    <nav class="bg-cyan-400 fixed top-0 start-0 end-0">
+      <ul class="flex p-2 gap-4">
+        <li><a href="/">نماد</a></li>
+        <li><a href="/attraction">جاذبه ها</a></li>
+        <li><a href="/blogs">بلاگ ها</a></li>
+        <li><a href="/events">رویداد ها</a></li>
       </ul>
     </nav>
+
+    <div class="h-12"></div>
 
     {{partial .Name .Data}}
   </body>
