@@ -50,9 +50,8 @@ func (app *App) Setup() {
 		EH:    app.eh,
 	}.Routes())
 
-	app.router.Get("/index.css", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, filepath.Join(app.root, "public/index.css"))
-	})
+	app.router.Handle("/static/*", http.StripPrefix("/static/",
+		http.FileServer(http.Dir(filepath.Join(app.root, "public")))))
 }
 
 func (app *App) Start() {
