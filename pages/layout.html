@@ -16,20 +16,30 @@
       rel="stylesheet"
     />
 
+    <link rel="icon" type="image/x-icon" href="/static/favicon.svg" />
     <title>گردشگری همدان</title>
   </head>
   <body>
-    <nav class="bg-cyan-400 fixed top-0 start-0 end-0">
+    <nav class="bg-gray-500 fixed top-0 start-0 end-0">
       <ul class="flex p-2 gap-4">
-        <li><a href="/">نماد</a></li>
-        <li><a class="hover:underline" href="/attraction">جاذبه ها</a></li>
+        <li>
+          <a href="/"
+            ><img
+              src="/static/favicon.svg"
+              alt="Avecina"
+              width="30"
+              height="30"
+          /></a>
+        </li>
+
+        <li><a class="hover:underline" href="/attractions">جاذبه ها</a></li>
         <li><a class="hover:underline" href="/blogs">بلاگ ها</a></li>
         <li><a class="hover:underline" href="/events">رویداد ها</a></li>
       </ul>
     </nav>
 
     <div class="h-12"></div>
-
     {{partial .Name .Data}}
+    <div class="h-36"></div>
   </body>
 </html>

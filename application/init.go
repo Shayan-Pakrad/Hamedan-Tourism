@@ -19,7 +19,9 @@ import (
 )
 
 func (app *App) initLogger() {
-	app.logger = slog.New(slog.NewTextHandler(os.Stdout, nil))
+	app.logger = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
+		Level: slog.LevelDebug,
+	}))
 }
 
 func (app *App) initRoot() {

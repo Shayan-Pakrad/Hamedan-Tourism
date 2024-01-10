@@ -76,8 +76,10 @@ func (app *App) createTables() {
 
 func (app *App) registerRoutes() {
 	app.router.Mount("/", resource.PageResource{
-		Pages: app.pages,
-		EH:    app.eh,
+		Logger: app.logger,
+		DB:     app.db,
+		Pages:  app.pages,
+		EH:     app.eh,
 	}.Routes())
 
 	app.router.Handle("/static/*", http.StripPrefix("/static/",
