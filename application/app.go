@@ -67,11 +67,23 @@ func (app *App) Start() {
 func (app *App) createTables() {
 	ctx := context.Background()
 
-	app.db.
+	if _, err := app.db.
 		NewCreateTable().
 		IfNotExists().
 		Model((*model.Attraction)(nil)).
-		Exec(ctx)
+		Exec(ctx); err != nil {
+		app.logger.Error("failed to create attractions table", "error", err)
+		os.Exit(1)
+	}
+
+	if _, err := app.db.
+		NewCreateTable().
+		IfNotExists().
+		Model((*model.Blog)(nil)).
+		Exec(ctx); err != nil {
+		app.logger.Error("failed to create blogs table", "error", err)
+		os.Exit(1)
+	}
 }
 
 func (app *App) registerRoutes() {

@@ -30,6 +30,7 @@ func (pr PageResource) Routes() chi.Router {
 	r.Get("/", pr.EH.HandleFunc(pr.home))
 	r.Get("/attractions", pr.EH.HandleFunc(pr.attractions))
 	r.Get("/attractions/{id:[0-9]+}", pr.EH.HandleFunc(pr.attraction))
+	r.Get("/blogs", pr.EH.HandleFunc(pr.blogs))
 
 	return r
 }
@@ -51,9 +52,9 @@ func (pr PageResource) attractions(w http.ResponseWriter, r *http.Request) error
 }
 
 type Attraction struct {
-	ID      int64  `bun:"id"`
-	Title   string `bun:"title"`
-	Brief   string `bun:"brief"`
+	ID      int64         `bun:"id"`
+	Title   string        `bun:"title"`
+	Brief   string        `bun:"brief"`
 	Content template.HTML `bun:"content"`
 }
 
@@ -72,5 +73,17 @@ func (pr PageResource) attraction(w http.ResponseWriter, r *http.Request) error 
 	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
 		Name: "attraction.html",
 		Data: attraction,
+	})
+}
+
+func (pr PageResource) blogs(w http.ResponseWriter, r *http.Request) error {
+	blogs := []model.Blog{}
+	if err := pr.DB.NewSelect().Model(&blogs).Column("id", "title", "brief", "views").Scan(r.Context()); err != nil {
+		return err
+	}
+
+	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
+		Name: "blogs.html",
+		Data: blogs,
 	})
 }
