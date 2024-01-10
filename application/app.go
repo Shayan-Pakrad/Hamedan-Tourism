@@ -47,6 +47,10 @@ func New() *App {
 	return app
 }
 
+func (app *App) Setup() {
+	// TODO: routes here
+}
+
 func (app *App) Start() {
 	srv := &http.Server{
 		Addr: os.Getenv("ADDR"),
