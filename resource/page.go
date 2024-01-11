@@ -31,6 +31,7 @@ func (pr PageResource) Routes() chi.Router {
 	r.Get("/attractions", pr.EH.HandleFunc(pr.attractions))
 	r.Get("/attractions/{id:[0-9]+}", pr.EH.HandleFunc(pr.attraction))
 	r.Get("/blogs", pr.EH.HandleFunc(pr.blogs))
+	r.Get("/blogs/{id:[0-9]+}", pr.EH.HandleFunc(pr.blog))
 
 	return r
 }
@@ -86,5 +87,31 @@ func (pr PageResource) blogs(w http.ResponseWriter, r *http.Request) error {
 	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
 		Name: "blogs.html",
 		Data: blogs,
+	})
+}
+
+type Blog struct {
+	ID      int64         `bun:"id"`
+	Title   string        `bun:"title"`
+	Content template.HTML `bun:"content"`
+	Brief   string        `bun:"brief"`
+	Views   int           `bun:"views,default:0"`
+}
+
+func (pr PageResource) blog(w http.ResponseWriter, r *http.Request) error {
+	strID := chi.URLParam(r, "id")
+	id, err := strconv.ParseInt(strID, 10, 64)
+	if err != nil {
+		return xmate.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	blog := new(Blog)
+	if err := pr.DB.NewSelect().Model((*model.Blog)(nil)).Where("id = ?", id).Scan(r.Context(), blog); err != nil {
+		return err
+	}
+
+	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
+		Name: "blog.html",
+		Data: blog,
 	})
 }
