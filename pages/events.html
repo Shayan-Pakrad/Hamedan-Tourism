@@ -5,10 +5,20 @@
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 md:p-6"
   >
     {{range .}}
-      <div class="border-gray-500 shadow rounded">
-        <h2>{{.Title}}</h2>
+      <div class="border-gray-500 shadow rounded p-4 flex flex-col min-h-48
+      relative">
+        <h2 class="text-xl font-bold">{{.Title}}</h2>
         <p>{{.Brief}}</p>
-        <p class="text-sm text-gray-500 dark:text-gray-400">{{.Due}}</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400 self-end pt-4">
+          {{date .Due}}
+        </p>
+
+        <p class="absolute bottom-4 left-4 text-green-500">
+          {{price .TicketPrice}} تومان
+        </p>
+
+        <button class="text-white bg-green-500 hover:bg-green-600
+        transition-colors rounded-md p-2 absolute bottom-4">خرید بلیط</button>
       </div>
     {{end}}
   </section>

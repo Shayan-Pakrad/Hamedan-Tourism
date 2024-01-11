@@ -9,7 +9,9 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
+	"github.com/dustin/go-humanize"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/validator/v10"
 	"github.com/uptrace/bun"
@@ -63,6 +65,12 @@ func (app *App) initPages() {
 			}
 
 			return template.HTML(buf.String()), nil
+		},
+		"price": func(p int64) string {
+			return humanize.Comma(p)
+		},
+		"date": func(t time.Time) string {
+			return t.Format("15:04 2006/01/02")
 		},
 	})
 
