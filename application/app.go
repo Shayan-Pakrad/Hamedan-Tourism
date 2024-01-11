@@ -84,6 +84,15 @@ func (app *App) createTables() {
 		app.logger.Error("failed to create blogs table", "error", err)
 		os.Exit(1)
 	}
+
+	if _, err := app.db.
+		NewCreateTable().
+		IfNotExists().
+		Model((*model.Event)(nil)).
+		Exec(ctx); err != nil {
+		app.logger.Error("failed to create events table", "error", err)
+		os.Exit(1)
+	}
 }
 
 func (app *App) registerRoutes() {

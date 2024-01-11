@@ -32,6 +32,7 @@ func (pr PageResource) Routes() chi.Router {
 	r.Get("/attractions/{id:[0-9]+}", pr.EH.HandleFunc(pr.attraction))
 	r.Get("/blogs", pr.EH.HandleFunc(pr.blogs))
 	r.Get("/blogs/{id:[0-9]+}", pr.EH.HandleFunc(pr.blog))
+	r.Get("/events", pr.EH.HandleFunc(pr.events))
 
 	return r
 }
@@ -113,5 +114,17 @@ func (pr PageResource) blog(w http.ResponseWriter, r *http.Request) error {
 	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
 		Name: "blog.html",
 		Data: blog,
+	})
+}
+
+func (pr PageResource) events(w http.ResponseWriter, r *http.Request) error {
+	events := []model.Event{}
+	if err := pr.DB.NewSelect().Model(&events).Scan(r.Context()); err != nil {
+		return err
+	}
+
+	return xmate.WriteHTML(w, pr.Pages, http.StatusOK, pageProps{
+		Name: "events.html",
+		Data: events,
 	})
 }

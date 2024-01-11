@@ -1,0 +1,15 @@
+<div class="mx-36 my-8 p-8 shadow-xl rounded bg-white">
+  <h1 class="text-4xl font-bold text-center">رویداد ها</h1>
+
+  <section
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 md:p-6"
+  >
+    {{range .}}
+      <div class="border-gray-500 shadow rounded">
+        <h2>{{.Title}}</h2>
+        <p>{{.Brief}}</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">{{.Due}}</p>
+      </div>
+    {{end}}
+  </section>
+</div>
