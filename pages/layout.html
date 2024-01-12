@@ -21,20 +21,26 @@
   </head>
   <body class="bg-gray-100" hx-boost="true">
     <nav class="bg-sky-500/60 fixed top-0 start-0 end-0 text-white shadow-xl
-      backdrop-blur-xl z-10">
-      <ul class="flex px-4 py-2 gap-6 items-center h-14">
-        <li><a class="bg-black p-2 border-2 border-black rounded-md min-w-24 block text-center" href="/login">ورود</a></li>
-        <li><a class="border-black border-2 text-black hover:bg-black
+      backdrop-blur-xl z-10 flex px-4 py-2 items-center h-14 justify-between">
+      <div class="flex items-center gap-6">
+        <a href="/">
+          <img src="/static/favicon.svg" alt="Avecina" class="w-10 h-10" />
+        </a>
+
+        <div class="w-2"></div>
+
+        <a class="hover:underline" href="/attractions">جاذبه ها</a>
+        <a class="hover:underline" href="/blogs">بلاگ ها</a>
+        <a class="hover:underline" href="/events">رویداد ها</a>
+        <a class="hover:underline" href="/criticism">انتقادات و پیشنهادات</a>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a class="bg-black p-2 border-2 border-black rounded-md min-w-24 block text-center" href="/login">ورود</a>
+        <a class="border-black border-2 text-black hover:bg-black
           hover:text-white transition-colors p-2 rounded-md min-w-24 block text-center"
-          href="/signup">ثبت نام</a></li>
-
-        <li class="w-2"></li>
-
-        <li><a class="hover:underline" href="/attractions">جاذبه ها</a></li>
-        <li><a class="hover:underline" href="/blogs">بلاگ ها</a></li>
-        <li><a class="hover:underline" href="/events">رویداد ها</a></li>
-        <li><a class="hover:underline" href="/criticism">انتقادات و پیشنهادات</a></li>
-      </ul>
+          href="/signup">ثبت نام</a>
+      </div>
     </nav>
 
     <div class="h-12"></div>
