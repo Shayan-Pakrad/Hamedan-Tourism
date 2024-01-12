@@ -5,6 +5,7 @@
     {{range .}}
       <div class="border-gray-500 shadow rounded p-6 flex flex-col min-h-64 relative bg-white">
         <h2 class="text-2xl font-bold text-gray-800">{{.Title}}</h2>
+        <div class="h-4"></div>
         <p class="text-gray-600">{{.Brief}}</p>
         <p class="text-sm text-gray-500 dark:text-gray-400 self-end pt-4">
           {{date .Due}}
